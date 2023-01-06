@@ -1,6 +1,18 @@
 import dynamic from 'next/dynamic'
-const Index = dynamic(
-    import('./EditUserInfo'),
+import http from '../../../../lib/http'
+import React, { useEffect } from 'react'
+import withLayout from '../../../../components/Layout'
+const DynamicComponent= dynamic(
+  () => import('./EditUserInfo'),
+  { ssr:false }
+)
+
+function Index(props:any) {
+  return (
+    <>
+      <DynamicComponent {...props}/>
+    </>
   )
-  
-  export default () => <Index />
+}
+
+export default (props:any) => withLayout(<Index {...props}/>)

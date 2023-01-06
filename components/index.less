@@ -1,0 +1,63 @@
+// 所有公共组件的样式，顶层class命名为mt-[name]（next.js的公共组件样式引用太抽象了，我fo辣）
+
+.mt-layout {
+    padding-top: 88px;
+    .header-box {
+        width: 100%;
+        height: 48px;
+        background-color: #232323;
+        position: fixed;
+        top: 0;
+        min-width: 1200px;
+        z-index: 9999;
+    }
+
+    .layout-box {
+        width: 80%;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+}
+
+.mt-header {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    
+
+    .header-blog-name {
+        font-size: 20px;
+        color: #fff;
+        font-weight: bold;
+        opacity: 0.95;
+        -webkit-transition: color 0.3s linear;
+        z-index: 2;
+    }
+
+    .header-nav-container {
+        width: 500px;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        a {
+            width: 86px;
+            height: 100%;
+            line-height: 48px;
+            font-size: 16px;
+            text-align: center;
+            color: #fff;
+            font-weight: 300;
+            opacity: 0.95;
+            -webkit-transition: color 0.3s linear;
+            position: relative;
+            z-index: 2;
+            &:hover {
+                color: #e9be9e;
+            }
+        }
+    }
+}

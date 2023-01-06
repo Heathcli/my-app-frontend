@@ -5,7 +5,7 @@ import { Editor, Toolbar } from '@wangeditor/editor-for-react'
 import { DomEditor, IDomEditor, IEditorConfig, IToolbarConfig } from '@wangeditor/editor'
 import { Helmet } from "react-helmet";
 import { message } from 'antd'
-import http from '../../../../lib/http'
+import http from '../../../../../lib/http'
 
 type InsertFnType = (url: string, alt: string, href: string) => void
 

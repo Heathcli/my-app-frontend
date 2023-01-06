@@ -1,6 +1,15 @@
 import dynamic from 'next/dynamic'
-const Index = dynamic(
-    import('./Register')
+import React from 'react'
+const DynamicComponent= dynamic(
+  () => import('./Register')
 )
 
-export default () => <Index />
+function Index(props:any) {
+  return (
+    <>
+      <DynamicComponent {...props}/>
+    </>
+  )
+}
+
+export default () => <Index/>

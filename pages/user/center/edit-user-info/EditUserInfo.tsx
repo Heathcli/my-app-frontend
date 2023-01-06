@@ -2,13 +2,14 @@ import { Button, Form, Input, message } from 'antd'
 import React, { useEffect } from 'react'
 import http from '../../../../lib/http';
 import Login from '../../login';
+import Center from '../../../../components/UserCenterLayout'
 
 export default function Index(props: any) {
 
   const [form] = Form.useForm()
 
   useEffect(()=>{
-    form.setFieldsValue(props.data.userInit)
+    // form.setFieldsValue(props.data.userInit)
   },[])
 
   const onFinish = (values: any) => {
@@ -16,43 +17,11 @@ export default function Index(props: any) {
       message.success('注册成功')
     })
   };
-  
-  if(props.data.err){
-    return <div>404</div>
-  }
 
   return (
-    <Form
-      name="basic"
-      form={form}
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 16 }}
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-      autoComplete="off"
-    >
-      <Form.Item
-        label="Username"
-        name="userName"
-        rules={[{ required: true, message: 'Please input your username!' }]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        label="Password"
-        name="password"
-        rules={[{ required: true, message: 'Please input your password!' }]}
-      >
-        <Input.Password />
-      </Form.Item>
-
-      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+    <div>
+      <Center>edit</Center>
+    </div>
   )
 }
 
