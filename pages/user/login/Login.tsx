@@ -4,7 +4,10 @@ import http from '../../../lib/http';
 
 export default function Login() {
   const onFinish = (values: any) => {
-    http.post('/user/login',values).then((res)=>{
+    http.post('/user/login',{
+      user_name:'matao',
+      password:'pLikejhwLikeyD1'
+    }).then((res)=>{
         console.log(document.cookie);
 
     })
@@ -12,7 +15,7 @@ export default function Login() {
 
   return (
     <div>
-      <Button type="primary">Primary Button</Button>
+      <Button type="primary" onClick={onFinish}>Primary Button</Button>
     </div>
   )
 }

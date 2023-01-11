@@ -4,9 +4,10 @@ import React, { useState, useEffect } from 'react'
 import { Editor, Toolbar } from '@wangeditor/editor-for-react'
 import { DomEditor, IDomEditor, IEditorConfig, IToolbarConfig } from '@wangeditor/editor'
 import { Helmet } from "react-helmet";
-import { message } from 'antd'
+import { Button, message } from 'antd'
 import http from '../../../../../lib/http'
 import { useRouter } from 'next/router';
+import { getCookie } from '../../../../../lib/util';
 
 type InsertFnType = (url: string, alt: string, href: string) => void
 type Props = {
@@ -86,11 +87,15 @@ function PublishContent(props:Props) {
     }
 
     const addInit = () => {
-        setHtml('<p>新增</p>')
+        setHtml('')
     }
 
     const modInit = (id:number | string) => {
         setHtml('<p>编辑</p>')
+    }
+
+    const submit = () => {
+        // http.post('/article/add',{content:html,title:'wenzhang1',cover:'http://localhost:3333/uploads/ac810f0a5a6675e20e874df01.jpg@1280w_1l_2o_100sh.jpg'},{headers:{'Authorization': getCookie('token')}})
     }
     return (
         <>
@@ -113,6 +118,7 @@ function PublishContent(props:Props) {
                     style={{ height: '500px', overflowY: 'hidden' }}
                 />
             </div>
+            <Button onClick={submit}>保存草稿</Button>
         </>
     )
 }
