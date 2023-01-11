@@ -10,7 +10,7 @@ import { Content } from 'antd/es/layout/layout'
 import Link from 'next/link';
 
 
-function Center(props: any) {
+function UserCenter(props: any) {
 
   const [navList, setNavList] = useState<MenuProps['items']>([
     {
@@ -66,4 +66,4 @@ function Center(props: any) {
 
 
 
-export default Center
+export default UserCenter

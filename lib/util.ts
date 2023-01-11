@@ -23,9 +23,20 @@ const getCookie = (name:string) => {
     return "";
 }
 
+const parseSearch = (str:string) => {
+    let searchList = str.slice(1).split('&')
+    let searchObj:any = {}
+    for (let i = 0; i < searchList.length; i++) {
+        let searchItem = searchList[i].split('=')
+        searchObj[searchItem[0]] = searchItem[1]
+    }
+    return searchObj
+}
+
 
 export {
     isNodeEnv,
     httpEnv,
-    getCookie
+    getCookie,
+    parseSearch
 }

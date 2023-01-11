@@ -2,7 +2,7 @@ import { Button, Form, Input, message } from 'antd'
 import React, { useEffect } from 'react'
 import http from '../../../../lib/http';
 import Login from '../../login';
-import Center from '../../../../components/UserCenterLayout'
+import UserCenter from '../../../../components/UserCenterLayout'
 
 export default function Index(props: any) {
 
@@ -20,7 +20,7 @@ export default function Index(props: any) {
 
   return (
     <div>
-      <Center>edit</Center>
+      <UserCenter>edit</UserCenter>
     </div>
   )
 }
