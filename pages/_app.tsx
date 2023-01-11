@@ -10,6 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         colorPrimary: '#b5826d',
       },
     }}
+    autoInsertSpaceInButton={false}
   >
     <Component {...pageProps} />
   </ConfigProvider>

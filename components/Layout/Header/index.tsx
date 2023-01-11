@@ -22,7 +22,7 @@ export default function Header() {
         },
         {
             name: '我的',
-            link: '/user/center'
+            link: '/user/center/edit-user-info'
         }
     ])
 
@@ -36,7 +36,6 @@ export default function Header() {
                 className='header-nav-item'
                 key={item.link}
                 href={item.link}
-                target='_blank'
                 >
                 {item.name}
             </a>

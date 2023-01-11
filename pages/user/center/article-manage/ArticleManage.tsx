@@ -49,6 +49,10 @@ export default function ArticleManage() {
     {
       label: '回收站',
       value: 2
+    },
+    {
+      label: '新建文章',
+      value: 'addArticle'
     }
   ])
   // 当前选中的状态
@@ -63,24 +67,26 @@ export default function ArticleManage() {
   }, [])
 
   const switchStatus = (status: SegmentedValue) => {
-    setCurrentStatus(status as number)
-    window.history.pushState(
-      null,
-      '',
-      `${window.location.pathname}?status=${status}`
-    );
+    if(status === 'addArticle') {
+      window.location.href = '/user/center/article-manage/publish-content'
+    } else {
+      setCurrentStatus(status as number)
+      window.history.pushState(
+        null,
+        '',
+        `${window.location.pathname}?status=${status}`
+      );
+    }
   }
 
   const renderAction = (record: DataType) => {
     return <>
       <Button
-        type="dashed"
         size='small'
         onClick={() => window.location.href = `/user/center/article-manage/publish-content/${record.id}`}>
         编辑
       </Button>
       <Button
-        type="dashed"
         size='small'
         onClick={() => setShowChangeLineModel(true)}>
         {currentStatus === 0 && '下线'}
@@ -89,7 +95,6 @@ export default function ArticleManage() {
       </Button>
       {
         currentStatus !== 2 && <Button
-        type="dashed"
         size='small'
         onClick={() => setShowDeleteModel(true)}>
         删除
@@ -129,7 +134,7 @@ export default function ArticleManage() {
               title="Action"
               key="action"
               fixed='right'
-              width={200}
+              width={260}
               align='center'
               render={(_: any, record: DataType) => (
                 <Space size="middle">

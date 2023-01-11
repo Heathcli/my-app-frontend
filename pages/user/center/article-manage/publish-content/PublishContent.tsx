@@ -6,18 +6,27 @@ import { DomEditor, IDomEditor, IEditorConfig, IToolbarConfig } from '@wangedito
 import { Helmet } from "react-helmet";
 import { message } from 'antd'
 import http from '../../../../../lib/http'
+import { useRouter } from 'next/router';
 
 type InsertFnType = (url: string, alt: string, href: string) => void
+type Props = {
+    type:'edit' | 'add'
+}
 
-function PublishContent() {
+function PublishContent(props:Props) {
+    const router = useRouter()
     // editor 实例
     const [editor, setEditor] = useState<IDomEditor | null>(null)
     // 编辑器内容
-    const [html, setHtml] = useState('<p>hello</p>')
+    const [html, setHtml] = useState<string>('')
 
     // 模拟 ajax 请求，异步设置 html
     useEffect(() => {
-        setHtml('<p>hello world</p>')
+        if(props.type === 'add') {
+            addInit()
+        } else {
+            modInit(router.query.id as number | string)
+        }
     }, [])
     // 及时销毁 editor ，重要！
     useEffect(() => {
@@ -76,6 +85,13 @@ function PublishContent() {
         placeholder: '请输入内容...',
     }
 
+    const addInit = () => {
+        setHtml('<p>新增</p>')
+    }
+
+    const modInit = (id:number | string) => {
+        setHtml('<p>编辑</p>')
+    }
     return (
         <>
             <Helmet>
